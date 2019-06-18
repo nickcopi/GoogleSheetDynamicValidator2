@@ -18,6 +18,10 @@ function buildValidation() {
   var tier3s = sheet.getRange(2,config.TIER3,config.ASSUMED_MAX,2).getValues();
   tier1s = tier1s.map(function(item){
     var t1 = item[1] + ' - ' + item[0];
+    var mbuIndex = t1.indexOf(' MBU');
+    if(mbuIndex !== -1){
+     t1 = t1.substring(0,mbuIndex+1) + t1.substring(mbuIndex+4,t1.length); 
+    }
     if(!out[t1]) out[t1] = {};
     return t1;
   });
